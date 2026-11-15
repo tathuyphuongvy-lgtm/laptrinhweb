@@ -1,0 +1,8 @@
+@echo off
+rem Copy vao thu muc bin cua Tomcat, doi ten thanh setenv.bat.
+rem Sua JAVA_HOME va mat khau MySQL cho dung may cua ban.
+set "JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-21"
+set "DB_URL=jdbc:mysql://localhost:3306/fashion_jpa?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Ho_Chi_Minh&characterEncoding=UTF-8"
+set "DB_USER=root"
+set "DB_PASSWORD=THAY_MAT_KHAU_MYSQL_CUA_BAN"
+set "UPLOAD_DIR=D:\jpa-category-v2-uploads"

@@ -1,0 +1,7 @@
+# Copy thành config/db.properties nếu chạy mvnw exec:java tại thư mục project.
+# File db.properties bị .gitignore loại khỏi Git để không đẩy mật khẩu thật.
+# Với Tomcat ngoài: dùng bin/setenv.bat theo README, hoặc -Ddb.config=<đường dẫn tuyệt đối>.
+db.url=jdbc:mysql://localhost:3306/fashion_jpa?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Ho_Chi_Minh&characterEncoding=UTF-8
+db.user=root
+db.password=THAY_MAT_KHAU_MYSQL_CUA_BAN
+db.schema=update
