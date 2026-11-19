@@ -1,62 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>vn.iotstar</groupId>
-  <artifactId>jpa-category-v2</artifactId>
-  <version>1.0.0</version>
-  <packaging>war</packaging>
+  <groupId>vn.iotstar</groupId><artifactId>jpa-category</artifactId><version>1.0.0</version><packaging>war</packaging>
   <name>Bai tap 01 - CRUD Category bang JPA</name>
-  
-  <properties>
-      <maven.compiler.source>21</maven.compiler.source>
-      <maven.compiler.target>21</maven.compiler.target>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <hibernate.version>6.6.59.Final</hibernate.version>
-      <junit.version>5.11.4</junit.version>
-  </properties>
-  
+  <properties><maven.compiler.source>21</maven.compiler.source><maven.compiler.target>21</maven.compiler.target><project.build.sourceEncoding>UTF-8</project.build.sourceEncoding><hibernate.version>6.6.59.Final</hibernate.version><junit.version>5.11.4</junit.version></properties>
   <dependencies>
-      <!-- Hibernate & JPA -->
-      <dependency><groupId>org.hibernate.orm</groupId><artifactId>hibernate-core</artifactId><version>${hibernate.version}</version></dependency>
-      <dependency><groupId>org.hibernate.validator</groupId><artifactId>hibernate-validator</artifactId><version>8.0.2.Final</version></dependency>
-      
-      <!-- MySQL Connector -->
-      <dependency><groupId>com.mysql</groupId><artifactId>mysql-connector-j</artifactId><version>9.2.0</version><scope>runtime</scope></dependency>
-      
-      <!-- Servlet & JSTL -->
-      <dependency><groupId>jakarta.servlet</groupId><artifactId>jakarta.servlet-api</artifactId><version>6.1.0</version><scope>provided</scope></dependency>
-      <dependency><groupId>jakarta.servlet.jsp.jstl</groupId><artifactId>jakarta.servlet.jsp.jstl-api</artifactId><version>3.0.2</version></dependency>
-      <dependency><groupId>org.glassfish.web</groupId><artifactId>jakarta.servlet.jsp.jstl</artifactId><version>3.0.1</version></dependency>
-      
-      <!-- Testing -->
-      <dependency><groupId>com.h2database</groupId><artifactId>h2</artifactId><version>2.3.232</version><scope>test</scope></dependency>
-      <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter</artifactId><version>${junit.version}</version><scope>test</scope></dependency>
-      <dependency><groupId>org.apache.tomcat.embed</groupId><artifactId>tomcat-embed-core</artifactId><version>11.0.29</version><scope>test</scope></dependency>
-      <dependency><groupId>org.apache.tomcat.embed</groupId><artifactId>tomcat-embed-jasper</artifactId><version>11.0.29</version><scope>test</scope></dependency>
-
-      <!-- === THƯ VIỆN BỔ SUNG CHO TÍNH NĂNG EMAIL & BCRYPT === -->
-      <!-- Thư viện gửi Email (Jakarta Mail) -->
-      <dependency>
-          <groupId>com.sun.mail</groupId>
-          <artifactId>jakarta.mail</artifactId>
-          <version>2.0.1</version>
-      </dependency>
-
-      <!-- Thư viện mã hóa mật khẩu BCrypt -->
-      <dependency>
-          <groupId>org.mindrot</groupId>
-          <artifactId>jbcrypt</artifactId>
-          <version>0.4</version>
-      </dependency>
+    <dependency><groupId>org.sitemesh</groupId><artifactId>sitemesh</artifactId><version>3.3.0</version></dependency>
+    <dependency><groupId>com.cloudinary</groupId><artifactId>cloudinary-http44</artifactId><version>1.39.0</version></dependency>
+    <dependency><groupId>org.eclipse.angus</groupId><artifactId>jakarta.mail</artifactId><version>2.0.3</version></dependency>
+    <dependency><groupId>org.hibernate.orm</groupId><artifactId>hibernate-core</artifactId><version>${hibernate.version}</version></dependency>
+    <dependency><groupId>org.hibernate.validator</groupId><artifactId>hibernate-validator</artifactId><version>8.0.2.Final</version></dependency>
+    <dependency><groupId>com.mysql</groupId><artifactId>mysql-connector-j</artifactId><version>9.2.0</version><scope>runtime</scope></dependency>
+    <dependency><groupId>jakarta.servlet</groupId><artifactId>jakarta.servlet-api</artifactId><version>6.1.0</version><scope>provided</scope></dependency>
+    <dependency><groupId>jakarta.servlet.jsp.jstl</groupId><artifactId>jakarta.servlet.jsp.jstl-api</artifactId><version>3.0.2</version></dependency>
+    <dependency><groupId>org.glassfish.web</groupId><artifactId>jakarta.servlet.jsp.jstl</artifactId><version>3.0.1</version></dependency>
+    <dependency><groupId>com.h2database</groupId><artifactId>h2</artifactId><version>2.3.232</version><scope>test</scope></dependency>
+    <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter</artifactId><version>${junit.version}</version><scope>test</scope></dependency>
+    <dependency><groupId>org.apache.tomcat.embed</groupId><artifactId>tomcat-embed-core</artifactId><version>11.0.29</version><scope>test</scope></dependency>
+    <dependency><groupId>org.apache.tomcat.embed</groupId><artifactId>tomcat-embed-jasper</artifactId><version>11.0.29</version><scope>test</scope></dependency>
   </dependencies>
-  
-  <build>
-      <finalName>jpa-category-v2</finalName>
-      <plugins>
-          <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.14.0</version></plugin>
-          <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-war-plugin</artifactId><version>3.4.0</version></plugin>
-          <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId><version>3.5.2</version><configuration><systemPropertyVariables><app.db>h2</app.db><db.url>jdbc:h2:mem:category_tests;MODE=MySQL;DB_CLOSE_DELAY=-1</db.url><db.schema>create-drop</db.schema></systemPropertyVariables></configuration></plugin>
-          <plugin><groupId>org.codehaus.mojo</groupId><artifactId>exec-maven-plugin</artifactId><version>3.5.0</version></plugin>
-      </plugins>
-  </build>
+  <build><finalName>jpa-category</finalName><plugins>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.14.0</version></plugin>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-war-plugin</artifactId><version>3.4.0</version></plugin>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId><version>3.5.2</version><configuration><systemPropertyVariables><app.db>h2</app.db><db.url>jdbc:h2:mem:category_tests;MODE=MySQL;DB_CLOSE_DELAY=-1</db.url><db.schema>create-drop</db.schema></systemPropertyVariables></configuration></plugin>
+    <plugin><groupId>org.codehaus.mojo</groupId><artifactId>exec-maven-plugin</artifactId><version>3.5.0</version></plugin>
+  </plugins></build>
 </project>

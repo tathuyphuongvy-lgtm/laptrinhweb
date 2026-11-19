@@ -1,0 +1,4 @@
+# Copy thành config/cloudinary.properties, không commit thông tin thật.
+cloudinary.cloud_name=THAY_CLOUD_NAME
+cloudinary.api_key=THAY_API_KEY
+cloudinary.api_secret=THAY_API_SECRET

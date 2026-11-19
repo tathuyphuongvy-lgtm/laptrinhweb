@@ -1,0 +1,8 @@
+# Copy thành mail.properties và sửa thông tin thật. Không commit file mail.properties.
+mail.mode=smtp
+mail.host=smtp.gmail.com
+mail.port=587
+mail.ssl=false
+mail.username=EMAIL_GUI_CUA_BAN@gmail.com
+mail.password=MAT_KHAU_UNG_DUNG_SMTP
+mail.from=EMAIL_GUI_CUA_BAN@gmail.com
